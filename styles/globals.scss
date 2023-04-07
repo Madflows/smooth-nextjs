@@ -249,9 +249,20 @@ section {
           }
         }
         .gallery-item-image {
-          @apply bg-cover bg-center origin-center w-full h-full will-change-transform scale-75;
+          @apply bg-cover bg-center origin-center w-full h-[80vh] will-change-transform scale-75;
         }
       }
     }
+  }
+}
+
+
+// FOOTER
+
+.footer {
+  @apply text-center pb-[200px];
+
+  .location {
+    @apply text-[18vw] font-bodoni leading-[18vw] uppercase font-bold;
   }
 }
