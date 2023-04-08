@@ -3,8 +3,8 @@ import SectionHeader from '../SectionHeader';
 
 function About() {
   return (
-    <section className='about-section'>
-      <SectionHeader title={"About"} />
+    <section className='about-section' data-scroll-section>
+      <SectionHeader title={'About'} />
       <p id='headline'>
         Meg Griffin starts a blog called{' '}
         <span className='font-semibold'>Blooming Minds</span> about flowers and

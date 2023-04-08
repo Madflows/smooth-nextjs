@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
   return (
-    <section className='section-wrapper gallery-wrap'>
-      
+    <section className='section-wrapper gallery-wrap' data-scroll-section>
       <div className='gallery'>
         <div className='gallery-counter'>
           <span>{activeImage}</span>
@@ -21,7 +20,6 @@ function Gallery() {
           />
         ))}
       </div>
-      
     </section>
   );
 }

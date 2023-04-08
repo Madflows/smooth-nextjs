@@ -266,3 +266,16 @@ section {
     @apply text-[18vw] font-bodoni leading-[18vw] uppercase font-bold;
   }
 }
+
+
+// LOADER 
+
+.loader-wrapper {
+  @apply flex items-center justify-center flex-col bg-[#191919] text-[#dbd8d6];
+  h1 {
+    @apply text-[1.5vw] uppercase font-jamjuree font-semibold;
+  }
+  h2 {
+    @apply text-[1.5vw] uppercase font-bodoni italic mt-[10px];
+  }
+}

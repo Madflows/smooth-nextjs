@@ -1,3 +1,4 @@
+import useSmoothScroll from '@/hooks/useSmoothScroll';
 import '@/styles/globals.scss';
 import { Bodoni_Moda, Syncopate, Bai_Jamjuree } from 'next/font/google';
 
@@ -14,6 +15,7 @@ const baijamjuree = Bai_Jamjuree({
 });
 
 export default function App({ Component, pageProps }) {
+  useSmoothScroll();
   return (
     <main
       className={`${bodoni.variable} ${syncopate.variable} ${baijamjuree.variable} font-sans`}

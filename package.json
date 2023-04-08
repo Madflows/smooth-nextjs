@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.6",
     "autoprefixer": "^10.4.14",
     "classnames": "^2.3.2",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.10.0",
-    "gsap": "^3.11.5",
+    "gsap": "./gsap-bonus.tgz",
     "locomotive-scroll": "^4.1.4",
     "next": "13.2.4",
     "postcss": "^8.4.21",
