@@ -10,27 +10,23 @@ function Gallery() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
- setTimeout(() => {
+    let sections = gsap.utils.toArray('.gallery-item-wrapper');
 
-   let sections = gsap.utils.toArray('.gallery-item-wrapper');
-
-   gsap.to(sections, {
-     xPercent: -100 * (sections.length - 1),
-     ease: 'none',
-     scrollTrigger: {
-       trigger: galleryRef.current,
-       pin: true,
-       scrub: 0.5,
-       markers: true,
-       start: 'top top',
-       snap: 1 / (sections.length - 1),
-       end: () => `+=${galleryRef.current.offsetWidth} bottom`,
-     },
-   });
-    ScrollTrigger.refresh();
- })
-
-  }, [])
+    gsap.to(galleryRef.current, {
+      xPercent: -100,
+      x: () => -1 * (galleryRef.current.scrollWidth - window.innerWidth),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.gallery-wrap',
+        pin: '.gallery-wrap',
+        // snap: 1 / (sections.length - 1),
+        start: 'top top',
+         end: () =>  "+=" + (galleryRef.current.scrollWidth - window.innerWidth),
+        scrub: 1,
+        markers: true,
+      },
+    });
+  }, []);
 
   return (
     <section className='section-wrapper gallery-wrap'>
