@@ -5,8 +5,9 @@
 $bg-color: #f5f0ec;
 
 body {
-  cursor: none;
+  // cursor: none;
   background-color: $bg-color;
+  // overflow-x: hidden
 }
 
 section {
@@ -169,7 +170,12 @@ section {
   align-items: center;
 
   img {
-    clip-path: inset(0% 0% 0% 0%);
+    clip-path: inset(100% 0% 0% 0%);
+    transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+
+    &.is-reveal {
+      clip-path: inset(0% 0% 0% 0%);
+    }
   }
 
   h6 {
@@ -278,4 +284,10 @@ section {
   h2 {
     @apply text-[1.5vw] uppercase font-bodoni italic mt-[10px];
   }
+}
+
+
+// Animation
+.lineParent {
+  overflow: hidden;
 }

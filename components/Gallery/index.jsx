@@ -1,11 +1,40 @@
 import { GALLERY_IMAGES } from '@/data/photos';
-import React, { useState } from 'react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { gsap } from 'gsap/dist/gsap';
+import React, { useEffect, useRef, useState } from 'react';
 
 function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
+
+  const galleryRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+ setTimeout(() => {
+
+   let sections = gsap.utils.toArray('.gallery-item-wrapper');
+
+   gsap.to(sections, {
+     xPercent: -100 * (sections.length - 1),
+     ease: 'none',
+     scrollTrigger: {
+       trigger: galleryRef.current,
+       pin: true,
+       scrub: 0.5,
+       markers: true,
+       start: 'top top',
+       snap: 1 / (sections.length - 1),
+       end: () => `+=${galleryRef.current.offsetWidth} bottom`,
+     },
+   });
+    ScrollTrigger.refresh();
+ })
+
+  }, [])
+
   return (
-    <section className='section-wrapper gallery-wrap' data-scroll-section>
-      <div className='gallery'>
+    <section className='section-wrapper gallery-wrap'>
+      <div className='gallery' ref={galleryRef}>
         <div className='gallery-counter'>
           <span>{activeImage}</span>
           <span className='divider' />
