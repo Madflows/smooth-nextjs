@@ -4,9 +4,9 @@ import { gsap } from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 
-gsap.registerPlugin(ScrollTrigger);
 export default function useSmoothScroll() {
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({
       smoothWheel: true,
       duration: 3.2,
@@ -25,6 +25,5 @@ export default function useSmoothScroll() {
 
     requestAnimationFrame(raf);
 
-    ScrollTrigger.refresh();
   }, []);
 }

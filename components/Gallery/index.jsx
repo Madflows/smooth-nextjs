@@ -6,46 +6,68 @@ import React, { useEffect, useRef, useState } from 'react';
 function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
 
-  const galleryRef = useRef(null);
+  const triggerRef = useRef(null);
+  const sectionRef = useRef(null);
 
+  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    let sections = gsap.utils.toArray('.gallery-item-wrapper');
-
-    gsap.to(galleryRef.current, {
-      xPercent: -100,
-      x: () => -1 * (galleryRef.current.scrollWidth - window.innerWidth),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.gallery-wrap',
-        pin: '.gallery-wrap',
-        // snap: 1 / (sections.length - 1),
-        start: 'top top',
-         end: () =>  "+=" + (galleryRef.current.scrollWidth - window.innerWidth),
-        scrub: 1,
-        markers: true,
+    const pin = gsap.fromTo(
+      sectionRef.current,
+      {
+        translateX: 0,
       },
-    });
+      {
+        translateX: '-300vw',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: 'top top',
+          end: 'top+=200 center',
+          scrub: 0.5,
+          pin: true,
+          markers: true
+        },
+      }
+    );
+
+    
+
+    // let sections = gsap.utils.toArray('.gallery-item-wrapper');
+
+    // gsap.to(sections, {
+    //   xPercent: -100 * (sections.length - 1),
+    //   ease: 'none',
+    //   scrollTrigger: {
+    //     trigger: '.gallery',
+    //     pin: true,
+    //     scrub: 1,
+    //     snap: 1 / (sections.length - 1),
+    //     end: () => '+=' + galleryRef.current.offsetWidth,
+    //     markers: true,
+    //   },
+    // });
   }, []);
 
   return (
-    <section className='section-wrapper gallery-wrap'>
-      <div className='gallery' ref={galleryRef}>
-        <div className='gallery-counter'>
-          <span>{activeImage}</span>
-          <span className='divider' />
-          <span>{GALLERY_IMAGES.length}</span>
+    <div ref={triggerRef}>
+      <section className='section-wrapper gallery-wrap'>
+        <div className='gallery' ref={sectionRef}>
+          <div className='gallery-counter'>
+            <span>{activeImage}</span>
+            <span className='divider' />
+            <span>{GALLERY_IMAGES.length}</span>
+          </div>
+          {GALLERY_IMAGES.map((image, index) => (
+            <GalleryItem
+              key={image.src}
+              index={index}
+              {...image}
+              updateActiveImage={(index) => setActiveImage(index + 1)}
+            />
+          ))}
         </div>
-        {GALLERY_IMAGES.map((image, index) => (
-          <GalleryItem
-            key={image.src}
-            index={index}
-            {...image}
-            updateActiveImage={(index) => setActiveImage(index + 1)}
-          />
-        ))}
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

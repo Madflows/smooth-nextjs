@@ -220,9 +220,11 @@ section {
 
 .gallery-wrap {
   @apply bg-[#c53f41] mx-[-5vw] relative;
-
+  .trigger {
+    @apply bg-[#c53f41];
+  }
   .gallery {
-    @apply h-[80vh] py-[10vh] w-[400%] flex flex-nowrap;
+    @apply h-[80vh] py-[10vh] w-[400vw] flex flex-row;
     .gallery-counter {
       @apply absolute top-[10%] left-[100px] z-[1] leading-[16px] text-[#cbd8d6] font-jamjuree font-semibold text-[16px] inline-block;
 
@@ -290,4 +292,10 @@ section {
 // Animation
 .lineParent {
   overflow: hidden;
+}
+
+
+.pin-spacer {
+  height: 100vh !important;
+  padding: 0px !important;
 }
