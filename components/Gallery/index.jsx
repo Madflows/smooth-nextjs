@@ -22,7 +22,7 @@ function Gallery() {
         scrollTrigger: {
           trigger: triggerRef.current,
           start: 'top top',
-          end: 'top+=200 center',
+          end: 'center center',
           scrub: 0.5,
           pin: true,
           markers: true

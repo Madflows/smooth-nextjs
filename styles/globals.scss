@@ -219,7 +219,7 @@ section {
 // Gallery section
 
 .gallery-wrap {
-  @apply bg-[#c53f41] mx-[-5vw] relative;
+  @apply bg-[#c53f41] mx-[-5vw] h-[100vh] relative;
   .trigger {
     @apply bg-[#c53f41];
   }

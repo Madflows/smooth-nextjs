@@ -11,7 +11,6 @@ export default function useSmoothScroll() {
       smoothWheel: true,
       duration: 3.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      // duration: 5,
     });
 
     lenis.on('scroll', (e) => {
