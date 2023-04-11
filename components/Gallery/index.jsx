@@ -75,14 +75,18 @@ function GalleryItem({
   return (
     <div ref={ref} className='gallery-item-wrapper'>
       <div />
-      <div className='gallery-item'>
+      <div
+        className={`gallery-item ${activeImage === index + 1 && 'is-reveal'}`}
+      >
         <div className='gallery-item-info'>
           <h1 className='gallery-info-title'>{title}</h1>
           <h6 className='gallery-info-subtitle'>{subtitle}</h6>
           <p className='gallery-info-category'>{category}</p>
         </div>
         <div
-          className={`gallery-item-image transition-all ${activeImage === index + 1 && 'is-reveal'}`}
+          className={`gallery-item-image transition-all ${
+            activeImage === index + 1 && 'is-reveal'
+          }`}
           style={{ backgroundImage: `url(${src})` }}
         ></div>
       </div>
