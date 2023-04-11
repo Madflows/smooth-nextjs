@@ -219,15 +219,15 @@ section {
 // Gallery section
 
 .gallery-wrap {
-  @apply bg-[#c53f41] mx-[-5vw] h-[100vh] relative;
+  @apply bg-[#121212] mx-[-5vw] h-[100vh] relative;
   .trigger {
-    @apply bg-[#c53f41] py-[100px] mb-[20vw];
+    @apply bg-[#121212] py-[100px] mb-[20vw];
     transform: translate(0px, 0px) !important;
   }
   .gallery {
     @apply h-[80vh] py-[10vh] w-[400vw] flex flex-row;
     .gallery-counter {
-      @apply absolute top-[10%] left-[100px] z-[1] leading-[16px] text-[#cbd8d6] font-jamjuree font-semibold text-[16px] inline-block;
+      @apply absolute top-[10%] left-[100px] z-[1] leading-[16px] text-[#dbdbdb] font-jamjuree font-semibold text-[16px] inline-block;
 
       .divider {
         content: '';
@@ -251,18 +251,18 @@ section {
           }
 
           .gallery-item-info {
-            @apply drop-shadow-md text-[#121212];
+            @apply drop-shadow-md;
           }
         }
         .gallery-item-info {
-          @apply absolute bottom-[10%] z-[1] translate-x-[-20%] text-[#ebd8d6] transition-all;
+          @apply absolute bottom-[10%] z-[1] translate-x-[-20%] text-[#dbdbdb] transition-all;
 
           .gallery-info-title {
             @apply leading-[6vw] font-jamjuree font-semibold text-[6vw];
           }
           .gallery-info-subtitle {
             @apply relative leading-[6vw] font-bodoni text-transparent  font-normal text-[6vw];
-            -webkit-text-stroke: 2px #ebd8d6;
+            -webkit-text-stroke: 2px #dbdbdb;
           }
           .gallery-info-category {
             @apply relative leading-[24px] font-jamjuree transition-all font-normal text-[24px] mt-[24vh];

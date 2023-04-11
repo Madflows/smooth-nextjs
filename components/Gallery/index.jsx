@@ -24,7 +24,7 @@ function Gallery() {
       end: () => '+=' + triggerRef.current.offsetWidth,
       // snap: 1 / (sections.length - 1),
       // pinSpacing: true,
-      scrub: true,
+      scrub: 0.5,
       pin: true,
       markers: false,
     });
