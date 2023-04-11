@@ -27,15 +27,8 @@ function Footer() {
           marginRight: '-5vw',
           backgroundColor: '#ffffff',
           position: 'relative',
+          opacity: 1
         },
-      )
-      .from(
-        '.footer-title',
-        {
-          opacity: 0,
-          y: '50px',
-        },
-        '<'
       )
       .from(split.chars, {
         duration: 1,
@@ -58,8 +51,8 @@ function Footer() {
     });
   }, []);
   return (
-    <section className='footer '>
-      <h2 className='uppercase font-semibold tracking-[1px] font-syncopate text-black mb-[50px] footer-title'>
+    <section className='footer opacity-0'>
+      <h2 className='uppercase font-semibold tracking-[1px] font-syncopate text-black mb-[50px]'>
         Made in
       </h2>
       <h1 className='location' id='location-text'>

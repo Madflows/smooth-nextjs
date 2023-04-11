@@ -23,7 +23,7 @@ function Gallery() {
       animation: pin,
       end: () => '+=' + triggerRef.current.offsetWidth,
       // snap: 1 / (sections.length - 1),
-      pinSpacing: true,
+      // pinSpacing: true,
       scrub: true,
       pin: true,
       markers: false,
