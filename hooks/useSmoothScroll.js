@@ -14,7 +14,7 @@ export default function useSmoothScroll() {
     });
 
     lenis.on('scroll', (e) => {
-      ScrollTrigger.update();
+      // ScrollTrigger.update();
     });
 
     function raf(time) {

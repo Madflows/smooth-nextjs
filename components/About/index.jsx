@@ -23,7 +23,7 @@ function About() {
         trigger: '#headline',
         start: 'top 90%',
         end: '+=500',
-        scrub: 1,
+        scrub: 1
       },
     });
   }, []);

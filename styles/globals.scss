@@ -221,7 +221,8 @@ section {
 .gallery-wrap {
   @apply bg-[#c53f41] mx-[-5vw] h-[100vh] relative;
   .trigger {
-    @apply bg-[#c53f41];
+    @apply bg-[#c53f41] py-[100px] mb-[20vw];
+    transform: translate(0px, 0px) !important;
   }
   .gallery {
     @apply h-[80vh] py-[10vh] w-[400vw] flex flex-row;
@@ -258,12 +259,18 @@ section {
         }
         .gallery-item-image {
           @apply bg-cover bg-center origin-center w-full h-[80vh] will-change-transform scale-75;
+          transition: all 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+          filter: grayscale(100%) sepia(20%) brightness(80%);
+
+          &.is-reveal {
+            transform: scale(1);
+            filter: none;
+          }
         }
       }
     }
   }
 }
-
 
 // FOOTER
 
@@ -275,8 +282,7 @@ section {
   }
 }
 
-
-// LOADER 
+// LOADER
 
 .loader-wrapper {
   @apply flex items-center justify-center flex-col bg-[#191919] text-[#dbd8d6];
@@ -288,12 +294,10 @@ section {
   }
 }
 
-
 // Animation
 .lineParent {
   overflow: hidden;
 }
-
 
 .pin-spacer {
   height: 100vh !important;

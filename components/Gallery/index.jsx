@@ -1,4 +1,5 @@
 import { GALLERY_IMAGES } from '@/data/photos';
+import useOnScreen from '@/hooks/useOnScreen';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { gsap } from 'gsap/dist/gsap';
 import React, { useEffect, useRef, useState } from 'react';
@@ -11,46 +12,27 @@ function Gallery() {
 
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    const pin = gsap.fromTo(
-      sectionRef.current,
-      {
-        translateX: 0,
-      },
-      {
-        translateX: '-300vw',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: 'top top',
-          end: 'center center',
-          scrub: 0.5,
-          pin: true,
-          markers: true
-        },
-      }
-    );
-
-    
-
-    // let sections = gsap.utils.toArray('.gallery-item-wrapper');
-
-    // gsap.to(sections, {
-    //   xPercent: -100 * (sections.length - 1),
-    //   ease: 'none',
-    //   scrollTrigger: {
-    //     trigger: '.gallery',
-    //     pin: true,
-    //     scrub: 1,
-    //     snap: 1 / (sections.length - 1),
-    //     end: () => '+=' + galleryRef.current.offsetWidth,
-    //     markers: true,
-    //   },
-    // });
+    const pin = gsap.timeline();
+    let sections = gsap.utils.toArray('.gallery-item-wrapper');
+    pin.to(sectionRef.current, {
+      xPercent: -100 * (sections.length - 1),
+      ease: 'none',
+    });
+    ScrollTrigger.create({
+      trigger: triggerRef.current,
+      animation: pin,
+      end: () => '+=' + triggerRef.current.offsetWidth,
+      // snap: 1 / (sections.length - 1),
+      pinSpacing: true,
+      scrub: true,
+      pin: true,
+      markers: false,
+    });
   }, []);
 
   return (
-    <div ref={triggerRef}>
-      <section className='section-wrapper gallery-wrap'>
+    <div className='section-wrapper gallery-wrap'>
+      <div ref={triggerRef} className='trigger'>
         <div className='gallery' ref={sectionRef}>
           <div className='gallery-counter'>
             <span>{activeImage}</span>
@@ -63,10 +45,11 @@ function Gallery() {
               index={index}
               {...image}
               updateActiveImage={(index) => setActiveImage(index + 1)}
+              activeImage={activeImage}
             />
           ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 }
@@ -77,10 +60,20 @@ function GalleryItem({
   subtitle,
   title,
   updateActiveImage,
+  activeImage,
   index,
 }) {
+  const ref = useRef(null);
+
+  const onScreen = useOnScreen(ref, 0.5);
+
+  useEffect(() => {
+    if (onScreen) {
+      updateActiveImage(index);
+    }
+  }, [onScreen, index, updateActiveImage]);
   return (
-    <div className='gallery-item-wrapper'>
+    <div ref={ref} className='gallery-item-wrapper'>
       <div />
       <div className='gallery-item'>
         <div className='gallery-item-info'>
@@ -89,7 +82,7 @@ function GalleryItem({
           <p className='gallery-info-category'>{category}</p>
         </div>
         <div
-          className='gallery-item-image'
+          className={`gallery-item-image transition-all ${activeImage === index + 1 && 'is-reveal'}`}
           style={{ backgroundImage: `url(${src})` }}
         ></div>
       </div>
