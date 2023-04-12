@@ -84,11 +84,13 @@ function GalleryItem({
           <p className='gallery-info-category'>{category}</p>
         </div>
         <div
-          className={`gallery-item-image transition-all ${
+          className={`gallery-item-image transition-all relative ${
             activeImage === index + 1 && 'is-reveal'
           }`}
           style={{ backgroundImage: `url(${src})` }}
-        ></div>
+        >
+          <div className='absolute inset-0 bg-[#000000]/20' />
+        </div>
       </div>
       <div />
     </div>
