@@ -44,15 +44,15 @@ function Footer() {
 
     ScrollTrigger.create({
       trigger: '.location',
-      start: 'top 50%',
+      start: 'top 90%',
       end: '+=300',
       scrub: 1,
       animation: footerTL,
     });
   }, []);
   return (
-    <section className='footer opacity-0'>
-      <h2 className='uppercase font-semibold tracking-[1px] font-syncopate text-black mb-[50px]'>
+    <section className='footer opacity-0 mt-[30vh]'>
+      <h2 className='uppercase font-semibold tracking-[1px] font-syncopate text-black  mb-[50px]'>
         Made in
       </h2>
       <h1 className='location' id='location-text'>

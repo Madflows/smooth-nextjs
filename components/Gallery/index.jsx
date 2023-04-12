@@ -21,7 +21,7 @@ function Gallery() {
     ScrollTrigger.create({
       trigger: triggerRef.current,
       animation: pin,
-      end: () => '+=' + triggerRef.current.offsetWidth,
+      end: () => '+=2000',
       // snap: 1 / (sections.length - 1),
       // pinSpacing: true,
       scrub: 0.5,
